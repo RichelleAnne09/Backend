@@ -1,6 +1,8 @@
-import express from "express";
+/*import express from "express";
+import 'dotenv/config.js';
+import bookRoutes from "./routers/BookRouters.js"
 
-//create express app
+//init app
 const app = express();
 
 //middleware
@@ -9,17 +11,34 @@ app.use(express.json());
 const port = 3000;
 
 try{
-
-    app.listen(port,()=>{
-        console.log('Listening to port 3000...');
+    app.listen(process.env.PORT || 3000, ()=>{
+        console.log(`Listening to port ${process.env.PORT || 3000}...`);
     });
-
-}catch (e){
+}catch(e){
     console.log(e);
 }
 
-app.get('/', async(request,respone) =>{
-    respone.status(200).json({message:"Hello Im Richelle"});
+app.use('/books',bookRoutes);
+*/
 
-});
+import express from "express";
+import 'dotenv/config.js';
+import studentRoutes from "./routers/StudentRoutes.js"
 
+//init app
+const app = express();
+
+//middleware
+app.use(express.json());
+
+const port = 3000;
+
+try{
+    app.listen(process.env.PORT || 3000, ()=>{
+        console.log(`Listening to port ${process.env.PORT || 3000}...`);
+    });
+}catch(e){
+    console.log(e);
+}
+
+app.use('/student',studentRoutes);

@@ -16,7 +16,7 @@ export const fetchStudent = async (req,res) =>{
 export const createStudent = async (req,res) =>{
     const {title,genre,status} = req.body
     try{
-        const studentId = await StudentModel.insertStudent(title,genre,status);
+        const studentId = await StudentModel.insertStudent(name,srcode,course);
         res.status(200).json({sucess: true, message: studentId});    
     }catch(e){
         console.log(e),
@@ -32,7 +32,7 @@ export const editStudent = async (req,res) =>{
     const {studentId} = req.params
 
     try{
-        const updatedId = await StudentModel.updateStudent (title,genre,status,studentId);
+        const updatedId = await StudentModel.updateStudent (name,srcode,course,studentId);
         res.status(200).json({sucess: true, message: updatedId});    
     }catch(e){
         console.log(e),

@@ -5,26 +5,26 @@ export const getStudents =async () =>{
     return rows;
 }
 
-export const insertStudent = async (title, genre, status) => {
+export const insertStudent = async (name, srcode, course) => {
     const [result] = await pool.query(
-        "INSERT INTO tblstudent (title, genre, status) VALUES (?, ?, ?)",
-        [title, genre, status]
+        "INSERT INTO tblstudent (name, srcode, course) VALUES (?, ?, ?)",
+        [name, srcode, course]
     );
     return result.insertId;
 };
 
-export const updateBook = async (title, genre, status, bookId) => {
+export const updateStudent = async (name, srcode, course, studentId) => {
     const [result] = await pool.query(
-        "UPDATE tblbook SET title = ?, genre = ?, status = ? WHERE id = ?",
-        [title, genre, status, bookId]
+        "UPDATE tblstudent SET title = ?, srcode = ?, status = ? WHERE id = ?",
+        [name, srcode, course, studentId]
     );
     return result.affectedRows;
 };
 
-export const deleteBook = async (bookId) => {
+export const deleteStudent = async (studentId) => {
     const [result] = await pool.query(
-        "DELETE FROM tblbook WHERE id = ?",
-        [bookId]
+        "DELETE FROM tblstudent WHERE id = ?",
+        [studentId]
     );
     return result.affectedRows;
 };
